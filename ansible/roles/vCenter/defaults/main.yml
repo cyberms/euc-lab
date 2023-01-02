@@ -1,0 +1,34 @@
+#ESXI-Settings
+esxi_address: '192.168.1.11'
+esxi_username: 'root'
+esxi_password: 'Password1,'
+esxi_datastore: 'nvme-datastore'
+esxi_power_on: 'yes'  #definiert ob das vCenter nach dem Deploy gestartet werden soll
+
+#VCenter-Settings
+vcenter_username: 'administrator@vsphere.local'
+vcenter_password: 'Password1,'
+vcenter_hostname: '192.168.1.12' #IP-Adresse eingeben, wenn DNS-Auflösung nicht möglich ist
+vcenter_displayname: 'vcenter'
+vcenter_address: '192.168.1.12'
+net_prefix: '24'
+net_gateway: '192.168.1.254'
+dns_servers: '192.168.1.5'
+domain: 'euc-lab.local' # nichts eintragen, wenn DNS-Auflösung nicht möglich ist
+searchpath: ""
+vcsa_size: 'tiny'
+vcsa_ova_file: '/home/sleveling/demolab/ansible/roles/vCenter/sources/VMware-vCenter-Server-Appliance-7.0.3.00600-19717403_OVF10.ova'
+datastorename: 'nvme-datastore'
+datacenter_name: 'Datacenter'
+cluster_name: 'lab'
+networkname: 'external'
+mac_adress_vcsa: '00:0c:29:81:d1:11'
+host_folder: 'hosts'
+vm_folder: 'vm'
+template_folder: 'templates'
+
+# Ansible-Settings
+ansible_python_interpreter: '/usr/bin/python3' #defines the interpreters
+ansible_connection: 'ssh' 
+ansible_user: 'root'
+ansible_ssh_pass: 'Password1,'
