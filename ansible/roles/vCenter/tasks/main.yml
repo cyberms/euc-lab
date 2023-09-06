@@ -143,9 +143,24 @@
 #     validate_certs: no
 #   delegate_to: localhost
 
-  ##################################
-  # Set Autostart on Host and VCSA #
-  ##################################
-- name: Run Powershell core script
-  ansible.builtin.command: pwsh /home/sleveling/demolab/ansible/roles/vCenter/files/autopoweronvcsa.ps1 --vcenter_hostname "{{ vcenter_hostname }}" --vcenter_password "{{ vcenter_password }}" --vcenter_username "{{ vcenter_username }}" --vcenter_displayname "{{ vcenter_displayname }}" --esxi_address "{{ esxi_address }}"
+##################################
+# Set Autostart on Host and VCSA #
+##################################
+# - name: Run Powershell core script
+#   ansible.builtin.command: pwsh /home/sleveling/demolab/ansible/roles/vCenter/files/autopoweronvcsa.ps1 --vcenter_hostname "{{ vcenter_hostname }}" --vcenter_password "{{ vcenter_password }}" --vcenter_username "{{ vcenter_username }}" --vcenter_displayname "{{ vcenter_displayname }}" --esxi_address "{{ esxi_address }}"
+#   delegate_to: localhost
+- name: Update for powerInfo config of virtual machine.
+  community.vmware.vmware_host_auto_start:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_address }}'
+    name: '{{ vcenter_displayname }}'
+    validate_certs: no
+    power_info:
+      start_action: powerOn
+      start_delay: 10
+      start_order: 1
+      stop_action: powerOff
+      wait_for_heartbeat: true
   delegate_to: localhost
