@@ -113,7 +113,7 @@
   register: template_folder_creation_result
   delegate_to: localhost
   
-####################
+###################
 # Add Host to VCSA
 ###################
 
@@ -132,23 +132,26 @@
     validate_certs: no
   delegate_to: localhost
 
-# - name: Move vcenter to vm folder
-#   community.vmware.vmware_guest_move:
-#     hostname: "{{ vcenter_hostname }}"
-#     username: "{{ vcenter_username }}"
-#     password: "{{ vcenter_password }}"
-#     datacenter: '{{ datacenter_name }}'
-#     name: '{{ vcenter_displayname }}'
-#     dest_folder: "/Datacenter/virtualmachines"
-#     validate_certs: no
-#   delegate_to: localhost
+
+########################
+# move Host to VM Folder
+########################
+
+- name: Move vcenter to vm folder
+  community.vmware.vmware_guest_move:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: '{{ datacenter_name }}'
+    name: '{{ vcenter_displayname }}'
+    dest_folder: "/{{ datacenter_name }}/virtualmachines"
+    validate_certs: no
+  delegate_to: localhost
 
 ##################################
 # Set Autostart on Host and VCSA #
 ##################################
-# - name: Run Powershell core script
-#   ansible.builtin.command: pwsh /home/sleveling/demolab/ansible/roles/vCenter/files/autopoweronvcsa.ps1 --vcenter_hostname "{{ vcenter_hostname }}" --vcenter_password "{{ vcenter_password }}" --vcenter_username "{{ vcenter_username }}" --vcenter_displayname "{{ vcenter_displayname }}" --esxi_address "{{ esxi_address }}"
-#   delegate_to: localhost
+
 - name: Update for powerInfo config of virtual machine.
   community.vmware.vmware_host_auto_start:
     hostname: '{{ vcenter_hostname }}'
