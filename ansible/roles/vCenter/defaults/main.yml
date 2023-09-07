@@ -24,7 +24,7 @@ cluster_name: 'lab'
 networkname: 'external'
 mac_adress_vcsa: '00:0c:29:81:d1:11'
 host_folder: 'hosts'
-vm_folder: 'vm'
+vm_folder: 'virtualmachines'
 template_folder: 'templates'
 
 # Ansible-Settings

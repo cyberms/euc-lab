@@ -87,13 +87,13 @@
   #  register: cl_result
   #  delegate_to: localhost
 
-- name: Create a VM folder vm
+- name: Create a VM folder virtualmachines
   vcenter_folder:
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     datacenter_name: '{{ datacenter_name }}'
-    folder_name: virtualmachines
+    folder_name: '{{ vm_folder }}'
     folder_type: vm
     state: present
     validate_certs: no
@@ -106,7 +106,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     datacenter_name: '{{ datacenter_name }}'
-    folder_name: templates
+    folder_name: '{{ template_folder }}'
     folder_type: vm
     state: present
     validate_certs: no
@@ -144,7 +144,7 @@
     password: "{{ vcenter_password }}"
     datacenter: '{{ datacenter_name }}'
     name: '{{ vcenter_displayname }}'
-    dest_folder: "/{{ datacenter_name }}/virtualmachines"
+    dest_folder: "/{{ datacenter_name }}/vm/{{ vm_folder }}"
     validate_certs: no
   delegate_to: localhost
 
