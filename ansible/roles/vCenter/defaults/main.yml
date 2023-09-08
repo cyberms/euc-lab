@@ -8,18 +8,18 @@ esxi_power_on: 'yes'  #definiert ob das vCenter nach dem Deploy gestartet werden
 #VCenter-Settings
 vcenter_username: 'administrator@vsphere.local'
 vcenter_password: 'Password1,'
-vcenter_hostname: '192.168.1.12' #IP-Adresse eingeben, wenn DNS-Auflösung nicht möglich ist
+vcenter_hostname: 'vcenter.euc-lab.de' #IP-Adresse eingeben, wenn DNS-Auflösung nicht möglich ist
 vcenter_displayname: 'vcenter'
 vcenter_address: '192.168.1.12'
 net_prefix: '24'
 net_gateway: '192.168.1.254'
-dns_servers: '192.168.1.5'
-domain: 'euc-lab.local' # nichts eintragen, wenn DNS-Auflösung nicht möglich ist
+dns_servers: '192.168.1.254'
+domain: 'euc-lab.de' # nichts eintragen, wenn DNS-Auflösung nicht möglich ist
 searchpath: ""
 vcsa_size: 'tiny'
-vcsa_ova_file: '/home/sleveling/euc-lab/ansible/roles/vCenter/sources/VMware-vCenter-Server-Appliance-8.0.0.10200-21216066_OVF10.ova'
+vcsa_ova_file: '/home/sleveling/euc-lab/ansible/roles/vCenter/sources/VMware-vCenter-Server-Appliance-8.0.1.00300-22088981_OVF10.ova'
 datastorename: 'nvme-datastore'
-datacenter_name: 'Datacenter'
+datacenter_name: 'datacenter'
 cluster_name: 'lab'
 networkname: 'external'
 mac_adress_vcsa: '00:0c:29:81:d1:11'

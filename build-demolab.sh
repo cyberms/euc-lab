@@ -10,18 +10,20 @@ cd ..
 ##########
 # Packer #
 ##########
-# Install Ubuntu 20.04 Template
-cd packer
-cd ubuntu_server_20.04
-packer init ubuntu_server_20.04.pkr.hcl
-packer build -var-file ubuntu_server_20.04.pkrvars.hcl -var-file vsphere.pkrvars.hcl ubuntu_server_20.04.pkr.hcl
-cd ..
 
-# #Install Windows Server 2019 Template
-cd windows_server_19
-packer init windows_server_19.pkr.hcl
-packer build -var-file windows_server_19.pkrvars.hcl -var-file vsphere.pkrvars.hcl windows_server_19.pkr.hcl
-cd ..
+cd packer
+
+# # Install Ubuntu 20.04 Template
+# cd ubuntu_server_20.04
+# packer init ubuntu_server_20.04.pkr.hcl
+# packer build -var-file ubuntu_server_20.04.pkrvars.hcl -var-file vsphere.pkrvars.hcl ubuntu_server_20.04.pkr.hcl
+# cd ..
+
+# # #Install Windows Server 2019 Template
+# cd windows_server_19
+# packer init windows_server_19.pkr.hcl
+# packer build -var-file windows_server_19.pkrvars.hcl -var-file vsphere.pkrvars.hcl windows_server_19.pkr.hcl
+# cd ..
 
 # # Install Windows Server 2022 Template
 cd  windows_server_22

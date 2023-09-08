@@ -130,6 +130,12 @@ variable "memory_reserve_all" {
   default = "true"
 }
 
+variable "firmware" {
+  type = string
+  description = "set Firmwareversion UEFI or Bios"
+  default = "true"
+}
+
 # Config VM Removable Disks
 
 variable "iso_datastore" {
@@ -223,7 +229,7 @@ source "vsphere-iso" "windows_client_2111" {
   insecure_connection     = "${var.vsphere_insecure_connection}"
   # config virtual machine
   vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}"
-  firmware                = "bios"
+  firmware                = "${var.firmware}"
   CPUs                    = "${var.cpus}"
   cpu_cores               = 4
   RAM                     = "${var.memory}"
@@ -237,15 +243,15 @@ source "vsphere-iso" "windows_client_2111" {
 
   floppy_files            = [           
         "./http/autounattend.xml",
-        "./scripts/disable-network-discovery.cmd",
-        "./scripts/disable-winrm.ps1",
-        "./scripts/enable-rdp.cmd",
-        "./scripts/enable-winrm.ps1",
+       # "./scripts/disable-network-discovery.cmd",
+       # "./scripts/disable-winrm.ps1",
+       # "./scripts/enable-rdp.cmd",
+       # "./scripts/enable-winrm.ps1",
         "./scripts/install-vm-tools.cmd",
-        "./scripts/set-temp.ps1",
-        "./scripts/setup-winrm.ps1",
+       # "./scripts/set-temp.ps1",
+       # "./scripts/setup-winrm.ps1",
         "./scripts/sysprep.bat",
-        "./scripts/remove-onedrive.ps1"
+       # "./scripts/remove-onedrive.ps1"
        # "./scripts/unattend.xml"
   ]
 

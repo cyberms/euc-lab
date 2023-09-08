@@ -8,7 +8,7 @@
     hostname: '{{ esxi_address }}'
     username: '{{ esxi_username }}'
     password: '{{ esxi_password }}'
-    name: '{{ vcenter_displayname }}' # shortname, not FQDN
+    name: '{{ vcenter_hostname }}' # shortname, not FQDN
     datastore: '{{ datastorename }}'
     networks: "{u'Network 1':u'{{ networkname }}'}"
     #networks: "{u'VM Network':u'{{ networkname }}'}"
@@ -21,8 +21,8 @@
       guestinfo.cis.appliance.net.addr.family: 'ipv4' # ipv4 or ipv6
       guestinfo.cis.appliance.net.mode: 'static' # static or dhcp
       guestinfo.cis.appliance.net.addr: '{{ vcenter_address }}' 
-      #guestinfo.cis.appliance.net.pnid: "{{ vcenter_hostname }}.{{ domain }}" # FQDN of vcenter server
-      guestinfo.cis.appliance.net.pnid: '{{ vcenter_address }}' # FQDN of vcenter server
+      guestinfo.cis.appliance.net.pnid: '{{ vcenter_hostname }}' # FQDN of vcenter server
+      #guestinfo.cis.appliance.net.pnid: '{{ vcenter_address }}' # FQDN of vcenter server
       guestinfo.cis.appliance.net.prefix: '{{ net_prefix }}' # netmask length, CIDR notation, i.e. '24'
       guestinfo.cis.appliance.net.gateway: '{{ net_gateway }}' 
       guestinfo.cis.appliance.net.dns.servers: '{{ dns_servers }}' # Comma separated list of IP addresses of DNS servers.
@@ -37,8 +37,8 @@
 
 - name: Wait for vCenter
   community.vmware.vmware_about_info:
-    # hostname: "{{ vcenter_hostname }}.{{ domain }}"
-    hostname: '{{ vcenter_address }}' 
+    hostname: '{{ vcenter_hostname }}'
+    #hostname: '{{ vcenter_address }}' 
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     validate_certs: no
@@ -143,7 +143,7 @@
     username: "{{ vcenter_username }}"
     password: "{{ vcenter_password }}"
     datacenter: '{{ datacenter_name }}'
-    name: '{{ vcenter_displayname }}'
+    name: '{{ vcenter_hostname }}'
     dest_folder: "/{{ datacenter_name }}/vm/{{ vm_folder }}"
     validate_certs: no
   delegate_to: localhost
@@ -158,7 +158,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_address }}'
-    name: '{{ vcenter_displayname }}'
+    name: '{{ vcenter_hostname }}'
     validate_certs: no
     power_info:
       start_action: powerOn
