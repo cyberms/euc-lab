@@ -21,19 +21,21 @@ vm_guest_os_version             = "2111"
 
 cpus                            = "4"
 disk_controller_type            = ["lsilogic-sas"]
-disk_size                       = "40960"
+disk_size                       = "65536" #65536 min requirements for Win11
 disk_thin_provisioned           = "true"
 memory                          = "4096"
 memory_reserve_all              = "true"
+firmaware                       = "efi-secure" #or bios
+
 #vm_version                      = 14
 
 # Config VM Removable Disks
 
 iso_datastore                   = "nvme-datastore"
 iso_path                        = "isos"
-iso_file                        = "22000.318.211104-1236.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+iso_file                        = "22621.525.220925-0207.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 iso_checksum_type               = "SHA256"
-iso_checksum                    = "684bc16adbd792ef2f7810158a3f387f23bf95e1aee5f16270c5b7f56db753b6"
+iso_checksum                    = "ebbc79106715f44f5020f77bd90721b17c5a877cbc15a3535b99155493a1bb3f"
 
 # Config VM Network
 

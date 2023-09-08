@@ -162,12 +162,12 @@ Deploys the following:
 
 ## Packer
 Packer setup consists of xxx main components:
-* `windows-server-2016.json`
-* `vars.json`
-* `setup` dir containing files necessary for automatic Windows installation
-* `ubuntu2004.json`
+* `vsphere.pkrvars.hcl`
+* `name_pkrvars.hcl`
+* `name_pkr-hcl` 
     
-1. I used Windows Server 2019 but I assume 2016 should also work.
+1. copy the ISO-Files to the relevant Datastore (in my case nvme-datastore) and create a iso-hash "shasum -a 256 (path/to/file)"
+    configure the name_pkrvars.hcl
 2. WinRM needs to be configured and **CredSSP** enabled
     - Ansible provides a great script to enable quickly https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
     - Run manually `Enable-WSManCredSSP -Role Server -Force`
